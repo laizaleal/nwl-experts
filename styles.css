@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* :root é um seletor, pesquisar */
+*, :root{
+  margin: 0;
+  padding: 0;
+  /* o tamanho das caixas será de borda a borda, não só o conteúdo */
+  box-sizing: border-box;
+
+  font-family: 'Inter', sans-serif;
+  /* propriedades abaixo deixam a fonte mais 
+  delicada, é quase imperceptível */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  /* aplica font smoothing somente para motores de  navegadores 
+  que usam webkit */
+  -webkit-font-smoothing: antialiased;
+  /* propriedade para o mozilla firefox do osx */
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+body{
+  background-color: #0f172a;
+}
+
+main{
+  padding: 20px;
+  max-width: 640px;
+  margin: 0 auto 64px;
+}
+header{
+  margin-top: 64px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #334155;
+}
+header h1{
+  font-size: 30px;
+  color: #f1f5f9;
+  margin-top: 24px;
+}
+#quiz{
+  /* contar quantos elementos tem, inicia o contador */
+  counter-reset: quiz-item;
+}
+.quiz-item{
+  margin-top: 24px;
+  border: 1px solid #475569;
+  border-radius: 10px;
+
+  overflow: hidden;
+}
+.quiz-item h3 {
+  padding: 16px 20px;
+  color: #e2e8f0;
+  background-color: #1e293b;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.quiz-item h3::before{
+  /* incrementa o contador td vez que ele identifica um h3 */
+  counter-increment: quiz-item;
+  content: counter(quiz-item);
+
+  background-color: #475569;
+  width: 28px;
+  height: 28px;
+  font-size: 12px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+}
+.quiz-item dl{
+  padding: 20px 24px;
+  /* propriedade usada no pai, não muda nada, mas o gap não funciona sem ele*/
+  display: grid;
+  /* espaçamento ENTRE os filhos */
+  gap: 8px;
+}
+.quiz-item dl dt{
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0;
+  color: #e2e8f0;
+
+  /* coloca um elemento do lado do outro */
+  display: flex;
+  /* alinhamento dos filhos, no caso o imput e span */
+  align-items: center;
+  gap: 8px;
+}
+input{
+  /* todas as propriedas que já existem por padrão */
+  all: unset;
+  border: 1px solid #94a3b8;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items:center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+input:checked{
+  border: 1px solid #A3E635;
+}
+/* criar um elemento antes do conteúdo do anterior
+before ta dentro do input */
+input:checked:before{
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+
+  background-color: #A3E635;
+}
+
+/* declaração */
+#acertos {
+  text-align: center;
+  background-color: #A3E635;
+  /* posicionamento fixo */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 12px;
+}
